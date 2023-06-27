@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- jquery cdn -->
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            $("#date1").datepicker();
+            var date1 = $("#date1")
+        });
+        $(function () {
+            $("#date2").datepicker();
+            var date2 = $("#date2")
+        });
+
+        function func() {
+            date1 = new Date(date1.value);
+            date2 = new Date(date2.value);
+            var milli_secs = date1.getTime() - date2.getTime();
+
+           
+            p1= date1;
+            document.getElementById("p1").innerHTML = p1;
+
+
+
+            // Convert the milli seconds to Days 
+            var year = milli_secs / (1000 * 3600 * 24 * 365.2425);
+            document.getElementById("ans1").innerHTML =
+                Math.round(Math.abs(year));
+
+            // Convert the milli seconds to Days 
+            var month = milli_secs / (1000 * 3600 * 24 * 30.436875);
+            document.getElementById("ans2").innerHTML =
+                Math.round(Math.abs(month));
+            
+                // Convert the milli seconds to Days 
+            var week = milli_secs / (1000 * 3600 * 24 * 7);
+            document.getElementById("ans3").innerHTML =
+                Math.round(Math.abs(week));
+
+            // Convert the milli seconds to Days 
+            var days = milli_secs / (1000 * 3600 * 24);
+            document.getElementById("ans4").innerHTML =
+                Math.round(Math.abs(days));
+        }
+    </script>
+    <style>
+        .date{
+            box-sizing: border-box;
+            width: 45%;
+        }
+        .foot{
+            width: 50%;
+            margin-left: 25%;
+            color: white;
+        }
+        .foot p{
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="date container-fluid mt-5 text-center">
+        <h1>Date interval</h1>
+        <hr>
+        <p>From :
+            <input type="date" id="date1">
+        </p>
+
+
+
+        <p>To :
+            <input type="date" id="date2">
+        </p>
+
+
+        <button class="btn btn-primary" onclick="func()" type="button">Calculate
+        </button>
+
+        <div class="foot mt-5 bg-primary">
+            <h3>Date interval between</h3>
+            <p><span id="p1"></span> and <span id="p2"></span></p>
+
+            <hr>
+
+            <p>in years: <span id="ans1"></span></p>
+            <p>in months: <span id="ans2"></span></p>
+            <p>in weeks: <span id="ans3"></span></p>
+            <p>in days: <span id="ans4"></span></p>
+
+            <hr>
+            <hr>
+        </div>
+
+    </div>
+</body>
+
+</html>
